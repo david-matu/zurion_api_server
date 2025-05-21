@@ -1,0 +1,56 @@
+<div class="card shadow shadow-lg border-success" id="profile-overview">
+	<div class="card-header bg-light">
+		<h5 class="card-title">AdvancedContact: ${AdvancedContact.contactId}</h5>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">CONTACT ID</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${AdvancedContact.contactId}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">FULL NAME</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${AdvancedContact.fullName}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">PHONE</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${AdvancedContact.phone}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">EMAIL</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${AdvancedContact.email}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">ID NUMBER</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${AdvancedContact.idNumber}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">DATE OF BIRTH</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${AdvancedContact.dateOfBirth}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">GENDER</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${AdvancedContact.gender}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">ORGANIZATION</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${AdvancedContact.organization}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">DATE CREATED</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${AdvancedContact.dateCreated}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">COMMENTS</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${AdvancedContact.comments}</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 text-dark label ">STATUS</div>
+			<div class="col-lg-9 col-md-8 font-weight-bold fw-bold">${AdvancedContact.status}</div>
+		</div>
+	</div>
+	<div class="card-footer">
+				<a class="btn btn-sm btn-success" href="${pageContext.request.contextPath}/sudo/listing/advancedcontact">All</a>
+				<a class="btn btn-sm btn-primary" href="${pageContext.request.contextPath}/sudo/update/advancedcontact/${AdvancedContact.contactId }">Edit</a>
+				<a class="btn btn-sm btn-danger btn-delete" href="${pageContext.request.contextPath}/sudo/advancedcontact/delete/${AdvancedContact.contactId }" title="Delete" data-filename="${AdvancedContact.contactId }" data-eid="${AdvancedContact.contactId }">Remove</a>
+	</div>
+</div>
