@@ -1,0 +1,471 @@
+{
+	"info": {
+		"_postman_id": "b381f4f9-7713-4c7c-91ee-c0de236c9801",
+		"name": "Zurion Tech Web APIs",
+		"description": "Comprises REST and SOAP API requests and example responses.\n\nMay 21, 2025",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38530558"
+	},
+	"item": [
+		{
+			"name": "REST: Retrieve All Contacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/zurionweb/api/contact"
+			},
+			"response": [
+				{
+					"name": "Retrieve All Contacts",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/zurionweb/api/contact"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "APPLICATION/JSON;charset=ISO-8859-1"
+						},
+						{
+							"key": "Content-Length",
+							"value": "784"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 May 2025 04:04:32 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=20"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"contactId\": 1,\n        \"fullName\": \"Tiger Nixon\",\n        \"maskedName\": \"T***\",\n        \"phone\": \"0748197707\",\n        \"phoneMask\": \"074819***707\",\n        \"phoneHash\": \"6ede7625c3dff91faa528633f5b38eb9c0caa101b6f5cee22c69dc8a1fcc0337\",\n        \"email\": \"davidmatu817@gmail.com\",\n        \"idNumber\": 12345,\n        \"dateOfBirth\": \"2024-04-17 03:00:00\",\n        \"gender\": \"MALE\",\n        \"organization\": \"Tiger\",\n        \"dateCreated\": \"May 19, 2025, 8:29:29?AM\",\n        \"comments\": \"Hello\",\n        \"status\": \"ACTIVE\"\n    },\n    {\n        \"contactId\": 2,\n        \"fullName\": \"Paxon Hamo\",\n        \"maskedName\": \"P***\",\n        \"phone\": \"0712345678\",\n        \"phoneMask\": \"071234***678\",\n        \"phoneHash\": \"107fa9e7e7b0e683c70acf7ae97ba28f90c633b17a4cf03e1693d530e9e3d737\",\n        \"email\": \"paxon@gmail.com\",\n        \"idNumber\": 87612345,\n        \"dateOfBirth\": \"2004-04-16 03:00:00\",\n        \"gender\": \"MALE\",\n        \"organization\": \"Zurion Tech\",\n        \"dateCreated\": \"May 21, 2025, 7:25:22?AM\",\n        \"comments\": \"Hello\",\n        \"status\": \"ACTIVE\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "REST: Create Contact",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fullName\": \"Mary Doe\",\n    \"maskedName\": \"T***\",\n    \"phone\": \"0748197707\",\n    \"email\": \"marydoe@emailz.com\",\n    \"idNumber\": 89712345,\n    \"dateOfBirth\": \"2002-05-22 07:06:00\",\n    \"gender\": \"FEMALE\",\n    \"organization\": \"Zurion Tech\",\n    \"comments\": \"Demo contact\",\n    \"status\": \"ACTIVE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/zurionweb/api/contact/search"
+			},
+			"response": [
+				{
+					"name": "Search-By-Company",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"Mary Doe\",\n    \"phone\": \"0745678123\",\n    \"email\": \"marydoe@emailz.com\",\n    \"idNumber\": 89712345,\n    \"dateOfBirth\": \"2002-05-22\",\n    \"gender\": \"FEMALE\",\n    \"organization\": \"Zurion Tech\",\n    \"comments\": \"Demo contact\",\n    \"status\": \"ACTIVE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/zurionweb/api/contact"
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 May 2025 04:23:42 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=20"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "REST: Search-by-Phone-Hash",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"searchType\": \"individual\",\n    \"searchTerm\": \"6ede7625c3dff91faa528633f5b38eb9c0caa101b6f5cee22c69dc8a1fcc0337\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/zurionweb/api/contact/search"
+			},
+			"response": [
+				{
+					"name": "Search Contact by Phone Hash Copy",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"searchType\": \"individual\",\n    \"searchTerm\": \"6ede7625c3dff91faa528633f5b38eb9c0caa101b6f5cee22c69dc8a1fcc0337\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/zurionweb/api/contact/search"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=ISO-8859-1"
+						},
+						{
+							"key": "Content-Length",
+							"value": "378"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 May 2025 03:57:56 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=20"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"contactId\": 1,\n    \"fullName\": \"Tiger Nixon\",\n    \"maskedName\": \"T***\",\n    \"phone\": \"0748197707\",\n    \"phoneMask\": \"074819***707\",\n    \"phoneHash\": \"6ede7625c3dff91faa528633f5b38eb9c0caa101b6f5cee22c69dc8a1fcc0337\",\n    \"email\": \"davidmatu817@gmail.com\",\n    \"idNumber\": 12345,\n    \"dateOfBirth\": \"Apr 17, 2024\",\n    \"gender\": \"MALE\",\n    \"organization\": \"Tiger\",\n    \"dateCreated\": \"2025-05-19 08:29:29\",\n    \"comments\": \"Hello\",\n    \"status\": \"ACTIVE\"\n}"
+				}
+			]
+		},
+		{
+			"name": "SOAP_Query_By_Organization",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					},
+					{
+						"key": "SOAPAction",
+						"value": "getContactsByOrganization",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n                  xmlns:ser=\"http://soap.zurionwebapi.david.test.web.zuriontech.com/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <ser:getContactsByOrganization>\n         <organization>Tiger</organization>\n      </ser:getContactsByOrganization>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": "http://localhost:8081/zurionwebapi/soap/contact"
+			},
+			"response": [
+				{
+					"name": "SOAP_Query_By_Organization",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"type": "text"
+							},
+							{
+								"key": "SOAPAction",
+								"value": "getContactsByOrganization",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n                  xmlns:ser=\"http://soap.zurionwebapi.david.test.web.zuriontech.com/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <ser:getContactsByOrganization>\n         <organization>Tiger</organization>\n      </ser:getContactsByOrganization>\n   </soapenv:Body>\n</soapenv:Envelope>\n",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": "http://localhost:8081/zurionwebapi/soap/contact"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 22 May 2025 03:57:45 GMT"
+						},
+						{
+							"key": "Transfer-encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-type",
+							"value": "text/xml; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "<?xml version=\"1.0\" ?>\n<S:Envelope xmlns:S=\"http://schemas.xmlsoap.org/soap/envelope/\">\n    <S:Body>\n        <ns2:getContactsByOrganizationResponse xmlns:ns2=\"http://soap.zurionwebapi.david.test.web.zuriontech.com/\">\n            <return>\n                <comments>Hello</comments>\n                <contactId>1</contactId>\n                <dateCreated>\n                    <nanos>0</nanos>\n                </dateCreated>\n                <dateOfBirth/>\n                <email>davidmatu817@gmail.com</email>\n                <fullName>Tiger Nixon</fullName>\n                <gender>MALE</gender>\n                <idNumber>12345</idNumber>\n                <maskedName>T***</maskedName>\n                <organization>Tiger</organization>\n                <phone>0748197707</phone>\n                <phoneHash>6ede7625c3dff91faa528633f5b38eb9c0caa101b6f5cee22c69dc8a1fcc0337</phoneHash>\n                <phoneMask>074819***707</phoneMask>\n                <status>ACTIVE</status>\n            </return>\n        </ns2:getContactsByOrganizationResponse>\n    </S:Body>\n</S:Envelope>"
+				}
+			]
+		},
+		{
+			"name": "SOAP_Hello_Query",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"http://soap.zurionwebapi.david.test.web.zuriontech.com/\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <web:sayHello>\n         <name>David</name>\n      </web:sayHello>\n   </soapenv:Body>\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": "http://localhost:8081/zurionwebapi/soap/contact"
+			},
+			"response": []
+		},
+		{
+			"name": "REST: Search-by-Company",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=8174CEC2D5155A76A67E3567C3A97564"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"searchType\": \"company\",\n    \"searchTerm\": \"Zurion Tech\"\n}"
+				},
+				"url": "localhost:8080/zurionweb/api/contact/search"
+			},
+			"response": [
+				{
+					"name": "REST: Search-by-Company",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "JSESSIONID=8174CEC2D5155A76A67E3567C3A97564"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"searchType\": \"company\",\n    \"searchTerm\": \"Zurion Tech\"\n}"
+						},
+						"url": "localhost:8080/zurionweb/api/contact/search"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=ISO-8859-1"
+						},
+						{
+							"key": "Content-Length",
+							"value": "381"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 May 2025 03:58:26 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=20"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"contactId\": 2,\n        \"fullName\": \"Paxon Hamo\",\n        \"maskedName\": \"P***\",\n        \"phone\": \"0712345678\",\n        \"phoneMask\": \"071234***678\",\n        \"phoneHash\": \"107fa9e7e7b0e683c70acf7ae97ba28f90c633b17a4cf03e1693d530e9e3d737\",\n        \"email\": \"paxon@gmail.com\",\n        \"idNumber\": 87612345,\n        \"dateOfBirth\": \"Apr 16, 2004\",\n        \"gender\": \"MALE\",\n        \"organization\": \"Zurion Tech\",\n        \"dateCreated\": \"2025-05-21 07:25:22\",\n        \"comments\": \"Hello\",\n        \"status\": \"ACTIVE\"\n    }\n]"
+				},
+				{
+					"name": "results - REST: Search-by-Company",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "JSESSIONID=8174CEC2D5155A76A67E3567C3A97564"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"searchType\": \"company\",\n    \"searchTerm\": \"Zurion Tech\"\n}"
+						},
+						"url": "localhost:8080/zurionweb/api/contact/search"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=ISO-8859-1"
+						},
+						{
+							"key": "Content-Length",
+							"value": "771"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 May 2025 04:24:07 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=20"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"contactId\": 2,\n        \"fullName\": \"Paxon Hamo\",\n        \"maskedName\": \"P***\",\n        \"phone\": \"0712345678\",\n        \"phoneMask\": \"071234***678\",\n        \"phoneHash\": \"107fa9e7e7b0e683c70acf7ae97ba28f90c633b17a4cf03e1693d530e9e3d737\",\n        \"email\": \"paxon@gmail.com\",\n        \"idNumber\": 87612345,\n        \"dateOfBirth\": \"Apr 16, 2004\",\n        \"gender\": \"MALE\",\n        \"organization\": \"Zurion Tech\",\n        \"dateCreated\": \"2025-05-21 07:25:22\",\n        \"comments\": \"Hello\",\n        \"status\": \"ACTIVE\"\n    },\n    {\n        \"contactId\": 3,\n        \"fullName\": \"Mary Doe\",\n        \"maskedName\": \"M***\",\n        \"phone\": \"0745678123\",\n        \"phoneMask\": \"074567***123\",\n        \"phoneHash\": \"da9ffb15f9f4a8e9151a01ecbe980be42ed5d1d4ccd56abf15a6d183aa7ff7bd\",\n        \"email\": \"marydoe@emailz.com\",\n        \"idNumber\": 89712345,\n        \"dateOfBirth\": \"May 21, 2002\",\n        \"gender\": \"FEMALE\",\n        \"organization\": \"Zurion Tech\",\n        \"dateCreated\": \"2025-05-22 07:23:42\",\n        \"comments\": \"Demo contact\",\n        \"status\": \"ACTIVE\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "REST: Search-by-Masks",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"searchType\": \"individual\",\n    \"searchTerm\": \"P***, 071234***678\"\n}"
+				},
+				"url": "localhost:8080/zurionweb/api/contact/search"
+			},
+			"response": [
+				{
+					"name": "REST: Search-by-Masks",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"searchType\": \"individual\",\n    \"searchTerm\": \"P***, 071234***678\"\n}"
+						},
+						"url": "localhost:8080/zurionweb/api/contact/search"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=ISO-8859-1"
+						},
+						{
+							"key": "Content-Length",
+							"value": "379"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 22 May 2025 04:02:36 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=20"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"contactId\": 2,\n    \"fullName\": \"Paxon Hamo\",\n    \"maskedName\": \"P***\",\n    \"phone\": \"0712345678\",\n    \"phoneMask\": \"071234***678\",\n    \"phoneHash\": \"107fa9e7e7b0e683c70acf7ae97ba28f90c633b17a4cf03e1693d530e9e3d737\",\n    \"email\": \"paxon@gmail.com\",\n    \"idNumber\": 87612345,\n    \"dateOfBirth\": \"Apr 16, 2004\",\n    \"gender\": \"MALE\",\n    \"organization\": \"Zurion Tech\",\n    \"dateCreated\": \"2025-05-21 07:25:22\",\n    \"comments\": \"Hello\",\n    \"status\": \"ACTIVE\"\n}"
+				}
+			]
+		}
+	]
+}

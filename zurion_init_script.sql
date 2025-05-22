@@ -17,6 +17,24 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 CREATE SCHEMA IF NOT EXISTS `zuriondb` ;
 USE `zuriondb` ;
 
+CREATE TABLE IF NOT EXISTS `zuriondb`.`advanced_contact` (
+  `CONTACT_ID` INT NOT NULL AUTO_INCREMENT,
+  `FULL_NAME` VARCHAR(45) NULL,
+  `MASKED_NAME` VARCHAR(255) NULL,
+  `PHONE` VARCHAR(14) NULL,
+  `PHONE_MASK` VARCHAR(255) NULL,
+  `PHONE_HASH` VARCHAR(255) NULL,
+  `EMAIL` VARCHAR(45) NULL,
+  `ID_NUMBER` INT(8) NULL,
+  `DATE_OF_BIRTH` DATE NULL,
+  `GENDER` VARCHAR(10) NULL COMMENT 'MALE / FEMALE (10 char max because of other variations of self identification that could be factored in)',
+  `ORGANIZATION` VARCHAR(30) NULL,
+  `DATE_CREATED` DATETIME NULL,
+  `COMMENTS` TEXT NULL COMMENT 'Any information, probably by admin remarking this contact',
+  `STATUS` VARCHAR(10) NULL COMMENT 'any status category that could differentiate this contact from normal management workflows e.g. ACTIVE (default), UNSUBSCRIBED etc.',
+  PRIMARY KEY (`CONTACT_ID`))
+ENGINE = InnoDB;
+
 -- -----------------------------------------------------
 -- Table `zuriondb`.`contact`
 -- -----------------------------------------------------

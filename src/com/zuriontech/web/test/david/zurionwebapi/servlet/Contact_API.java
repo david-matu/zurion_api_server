@@ -33,6 +33,8 @@ public class Contact_API extends HttpServlet {
 		    .registerTypeAdapter(java.sql.Date.class, new SqlDateAdapter())
 		    .create();
 	
+	private static final Gson gsonDateAdapt = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+	
 	public Contact_API() {
 		super();
 	}
@@ -68,7 +70,9 @@ public class Contact_API extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    // 1. Parse request body to AdvancedContact object
-	    AdvancedContact contact = gson.fromJson(request.getReader(), AdvancedContact.class);
+	    AdvancedContact contact = gsonDateAdapt.fromJson(request.getReader(), AdvancedContact.class);
+	   
+	    System.out.println("Create Contact received on API: " + contact.toString());
 	    
 	    Timestamp dateCreated = new Timestamp(System.currentTimeMillis());	//Timestamp.valueOf(request.getParameter("dateCreated"));
 	    String maskedName = AppUtils.maskName(contact.getFullName());

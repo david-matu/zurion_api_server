@@ -1,11 +1,14 @@
 # Zurion Technologies Web Test
-### By David May 5, 2024
+### By David May 21, 2025
 ____
 
 ### About
-This is a Contact Registry System that stores and manages contacts. 
+This is a Contact Registry Java web application that offers both form-based and API to manage contacts. 
 
-Additionally, it provides powerful and intuitive visualizations for the distributions of contacts based on their various characteristics.
+In this version, we have "advanced_contact" that has improvised security of the contacts by hashing phone numbers and masking the phone and name of the contacts.
+
+The API provides management interface to the client counterpart. API documentation can be downloaded [here](./ZurionTech-Web-APIs.postman_collection.json) and tested on an API client such as Postman. 
+
 
 ### Technical Specs
 This is a Maven-based Java web application project utilizing JDBC, Servlets and JSPs, with the JSPs employing Bootstrap 5 CSS 
@@ -34,6 +37,24 @@ mvn clean install  #install maven using yum install maven if not already install
 Find it [here](./zurion_init_script.sql)
 
 ```sql
+CREATE TABLE IF NOT EXISTS `zuriondb`.`advanced_contact` (
+  `CONTACT_ID` INT NOT NULL AUTO_INCREMENT,
+  `FULL_NAME` VARCHAR(45) NULL,
+  `MASKED_NAME` VARCHAR(255) NULL,
+  `PHONE` VARCHAR(14) NULL,
+  `PHONE_MASK` VARCHAR(255) NULL,
+  `PHONE_HASH` VARCHAR(255) NULL,
+  `EMAIL` VARCHAR(45) NULL,
+  `ID_NUMBER` INT(8) NULL,
+  `DATE_OF_BIRTH` DATE NULL,
+  `GENDER` VARCHAR(10) NULL COMMENT 'MALE / FEMALE (10 char max because of other variations of self identification that could be factored in)',
+  `ORGANIZATION` VARCHAR(30) NULL,
+  `DATE_CREATED` DATETIME NULL,
+  `COMMENTS` TEXT NULL COMMENT 'Any information, probably by admin remarking this contact',
+  `STATUS` VARCHAR(10) NULL COMMENT 'any status category that could differentiate this contact from normal management workflows e.g. ACTIVE (default), UNSUBSCRIBED etc.',
+  PRIMARY KEY (`CONTACT_ID`))
+ENGINE = InnoDB;
+
 CREATE SCHEMA IF NOT EXISTS `zuriondb` ;
 USE `zuriondb` ;
 
